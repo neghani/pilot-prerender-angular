@@ -1,10 +1,12 @@
 angular.module('todoController', [])
 
 	// inject the Todo service factory into our controller
-	.controller('mainController', ['$scope','$http','Todos', function($scope, $http, Todos) {
+	.controller('mainController', ['$scope','$http','Todos','$rootScope', function($scope, $http, Todos,$rootScope) {
 		$scope.formData = {};
 		$scope.loading = true;
-
+		$rootScope.title="Hey there I am from Angular"
+		$rootScope.image = "https://www.askideas.com/wp-content/uploads/2017/06/Free-Online-Photos1.jpg"
+		
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
