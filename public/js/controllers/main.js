@@ -1,7 +1,7 @@
 angular.module('todoController', [])
 
 	// inject the Todo service factory into our controller
-	.controller('mainController', ['$scope','$http','Todos','$rootScope', function($scope, $http, Todos,$rootScope) {
+	.controller('mainController', ['$scope','$http','$rootScope', function($scope, $http,$rootScope) {
 		$scope.formData = {};
 		$scope.loading = true;
 		$rootScope.title="Hey there I am from Angular"
@@ -10,12 +10,7 @@ angular.module('todoController', [])
 		// GET =====================================================================
 		// when landing on the page, get all todos and show them
 		// use the service to get all the todos
-		Todos.get()
-			.success(function(data) {
-				$scope.todos = data;
-				$scope.loading = false;
-			});
-
+	
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createTodo = function() {
@@ -42,11 +37,6 @@ angular.module('todoController', [])
 		$scope.deleteTodo = function(id) {
 			$scope.loading = true;
 
-			Todos.delete(id)
-				// if successful creation, call our get function to get all the new todos
-				.success(function(data) {
-					$scope.loading = false;
-					$scope.todos = data; // assign our new list of todos
-				});
+		
 		};
 	}]);
